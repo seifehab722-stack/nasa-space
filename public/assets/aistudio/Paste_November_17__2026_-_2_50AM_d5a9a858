@@ -1,0 +1,375 @@
+# BEYOND RELICS — MASTER PROMPT FOR AI WEBSITE BUILDER
+
+## 0. ROLE AND NON-NEGOTIABLE RULES
+
+You are a senior product designer and front-end engineer. Build a complete, multi-page, production-quality website for an educational project called BEYOND RELICS. Follow every instruction in this prompt. Do not simplify, merge sections, or skip features. When something is ambiguous, choose the option that gives the most polished, credible and scientifically responsible result.
+
+Non-negotiable rules:
+1. The project name is BEYOND RELICS. The main character is COSMO. Never rename either.
+2. The interface (backgrounds, text, buttons, borders, gradients, glows, icons, badges, overlays) uses only the palette defined in Section 3: dark space black, navy, electric blue, cyan and ice white. NO purple, violet or magenta may be used in any interface element. Exception: real space and science photographs (nebulae, galaxies, etc.) keep their natural colors, including purple and pink hues.
+3. Never invent scientific facts, numbers, dates, discoveries, quotes or sources. If a fact cannot be supported by a source, leave it out (rules in Section 8).
+4. Every button, link, tab and control must work. No decorative or dead UI.
+5. Never generate, redraw or substitute the character COSMO. Use only the reference images the team uploads. Until then, use clearly labeled placeholder frames.
+6. The comic content must be data-driven, so new chapters and pages can be added without touching components or redesigning anything.
+7. Do not add a database, backend or login system. Reading progress, quiz results and badges are stored locally in the visitor's browser.
+
+---
+
+## 1. PROJECT OVERVIEW
+
+BEYOND RELICS is an educational scientific comic and interactive space exploration platform. It simplifies science and space topics through a comic book whose hero is COSMO, a fictional alien explorer. The project is entered in the NASA Space Apps Challenge.
+
+It combines four things:
+- Comic storytelling
+- Astronomy and space exploration
+- Reliable, sourced scientific knowledge
+- Interactive learning
+
+Goal: turn complex scientific information into a beautiful, enjoyable, easy-to-understand visual experience, especially for students and young people.
+
+Audience: students, teenagers, young adults, teachers, and curious general readers. A competition jury will also evaluate the site, so it must look credible, polished and purposeful.
+
+---
+
+## 2. EXPERIENCE VISION AND DESIGN PRINCIPLES
+
+This is NOT a gallery of comic images and NOT a generic landing page. It is a complete digital platform. The visitor should feel they are entering a space-science observatory and joining a scientific expedition led by COSMO.
+
+The site blends three things:
+- The credibility and clarity of an advanced space-science website
+- The immersion of a premium digital comic reader
+- Gentle, meaningful educational interaction
+
+Design principles:
+- Cinematic but calm. Premium, not flashy.
+- Clear visual hierarchy. Every screen has one obvious focal point.
+- Generous negative space. Never crowded.
+- Scientific credibility first. Story and real science are always visually distinguishable.
+- Motion adds depth, never distraction.
+
+Avoid:
+- A video-game look: no HUD clutter, no neon overload, no arcade fonts, no gamified chrome.
+- Childish or cartoonish UI chrome around the comic. The comic art carries the playfulness; the interface stays refined.
+- Template-looking sections. Do not produce a generic SaaS landing page layout.
+
+---
+
+## 3. VISUAL IDENTITY
+
+### 3.1 Color system (define as design tokens / CSS variables)
+- Deep Space Black: #05080D (page background, reader stage)
+- Midnight Navy: #0A1626 (surfaces, cards, header on scroll)
+- Dark Blue: #102A43 (raised surfaces, borders, hover fills)
+- Electric Blue: #1677FF (primary actions, active states, links)
+- Cyan: #35D5F2 (accents, highlights, glow, focus rings, science markers)
+- Ice White: #EAF4FF (primary text, icons)
+- Derived tones are allowed only as lighter/darker or lower-opacity versions of the colors above (for example, Ice White at 70% for secondary text, Cyan at 15% for borders).
+- Gradients only between black, navy, dark blue, electric blue and cyan.
+- Glow effects use Electric Blue or Cyan at low opacity. Keep them subtle and elegant.
+- Real photographs keep their natural colors. Purple and pink tones inside nebula, galaxy and other space photographs are allowed. Do not recolor, tint or color-grade photos to remove them. Only interface-level elements must be purple-free: never create purple gradients, glows or tinted overlays, and use dark navy or black overlays for text legibility on top of photos..
+- Text contrast must meet WCAG AA at minimum.
+
+### 3.2 Typography
+- Display and headings: Space Grotesk (fallback: Sora, system sans-serif).
+- Body: Inter.
+- Small technical labels, captions, page counters and data tags: IBM Plex Mono, used sparingly.
+- Do NOT use sci-fi display fonts such as Orbitron or Audiowide.
+- Define a clear type scale: hero display, H1, H2, H3, body large, body, caption, label. Use tight tracking and uppercase on small labels only. Body line-height 1.6 or more, readable line length (about 60-75 characters) for long text.
+
+### 3.3 Backgrounds and atmosphere
+- Layered backgrounds: deep black base, soft navy-to-blue gradient glows, a fine star field, and very faint blue/cyan nebula haze.
+- Star field must be lightweight (CSS or a small canvas). Reduce or freeze it on mobile and when the user prefers reduced motion.
+- Add a gentle vignette so text always stays legible over imagery.
+- Use cinematic imagery (planets, nebulae, galaxies) as large hero/section backdrops with dark gradient overlays for text contrast.
+
+### 3.4 Components
+- Primary button: solid Electric Blue, Ice White text, soft cyan outer glow on hover/focus, subtle 2px upward movement. Rounded (10-12px).
+- Secondary button: transparent with a 1px Cyan or Ice White border, fills with Dark Blue on hover.
+- Cards: Midnight Navy surface, 1px border (Cyan at about 12-18% opacity), 16px radius, faint inner glow, gentle lift and border brighten on hover.
+- Chips and labels: small, uppercase, mono, thin border.
+- Inputs: dark surface, cyan focus ring.
+- Dividers: thin hairlines, optionally with small star-chart tick marks, very subtle.
+- Icons: a single thin-stroke icon set (Lucide), consistent size and weight.
+- Create a simple, elegant BEYOND RELICS wordmark (typographic, optionally with a minimal orbit-ring mark in SVG). Use it in header, footer and favicon.
+
+### 3.5 Motion
+- Durations 200-450ms, ease-out. Animate only transform and opacity.
+- Scroll reveals: fade and rise of 12-24px, staggered lightly. Subtle parallax (maximum about 8%) on hero layers.
+- Page transitions: short fade.
+- Respect prefers-reduced-motion everywhere (disable parallax, reveals become instant, star field static).
+- No auto-playing loops that compete with reading. Nothing flashes.
+
+### 3.6 Layout
+- 8px spacing grid. 12-column desktop grid, content max width about 1200-1280px.
+- Generous vertical rhythm between sections. Consistent section padding across all pages.
+
+---
+
+## 4. GLOBAL LAYOUT AND NAVIGATION
+
+### Header
+- Sticky. Transparent at the top of the page, becomes blurred Midnight Navy with a thin bottom border after scrolling.
+- Left: BEYOND RELICS wordmark (links to Home).
+- Center/right navigation: Home, Comic, Science, Explore, Mission, About. Active link clearly indicated with a cyan underline or glow.
+- Right: a "Read the Comic" primary button and a Mission Log icon button (opens the progress drawer described in Section 6).
+- Mobile: hamburger opens a full-screen navigation overlay with large tap targets, focus trapped while open, Esc to close.
+
+### Footer
+- Wordmark, one-line tagline, navigation links, links to Sources and Image Credits (on the About page), and the statement: "BEYOND RELICS is an independent educational project created for the NASA Space Apps Challenge. It is not affiliated with or endorsed by NASA."
+
+### Routes
+- / (Home)
+- /comic (Comic library with chapters)
+- /comic/:chapterSlug/:pageNumber (Reader)
+- /science (index) and /science/:slug (entry)
+- /explore (topic cards) and /explore/:slug (topic detail)
+- /mission
+- /about
+- A custom on-theme 404 page with a button back to Home.
+
+Other global behaviors: breadcrumbs on detail pages, scroll restoration, a visible skip-to-content link, and smooth route transitions.
+
+---
+
+## 5. PAGE-BY-PAGE SPECIFICATION
+
+### A. HOME (/)
+This page must make a strong cinematic impression within the first second and must not look like a standard template.
+
+1. Hero (full viewport height)
+   - Layered cinematic space scene: star field, soft blue nebula glow, the curved edge of a planet along the bottom (use a high-quality image slot or a refined CSS/SVG treatment), subtle parallax on scroll.
+   - COSMO shown large and clearly, using the uploaded character reference image (placeholder frame until provided), with a soft cyan rim glow. Desktop: text left, COSMO right. Mobile: COSMO above or beneath the text, stacked cleanly.
+   - Project name as the main title: BEYOND RELICS
+   - Tagline: "Discover the Universe. Uncover Its Secrets."
+   - Short description (2-3 sentences): "BEYOND RELICS is an educational scientific comic that follows COSMO, a fictional alien explorer, across the universe. Every discovery in the story is linked to real science, so you can read, explore and truly understand."
+   - Primary button: START EXPLORING (goes to /explore)
+   - Secondary button: READ THE COMIC (goes to /comic, or directly to the reader if the visitor has progress)
+   - A small scroll cue at the bottom.
+
+2. Project goals section: three or four concise goal cards (for example: Make space science accessible, Connect story to real science, Learn through interaction, Inspire curiosity). Short copy, icons, no statistics.
+
+3. Platform highlights: a refined showcase of the four pillars with a short description and a link each: The Comic Universe, The Science Behind the Story, Explore the Universe, Knowledge Quizzes and Badges. Use an asymmetric, editorial layout instead of four identical boxes.
+
+4. Featured comic preview: a cinematic preview of the first chapter (cover or first-page image slot) with a "Start Chapter 1" button.
+
+5. Story-to-Science teaser: a visual explaining the flow "Story moment, then Real science, then Quiz", with a sample science link.
+
+6. Explore teaser: a horizontally scrollable or compact row of the six topic cards with a link to /explore.
+
+7. Mission teaser and closing call to action with both buttons repeated.
+
+Scroll transitions between sections should feel smooth and cinematic but restrained.
+
+### B. THE COMIC UNIVERSE (/comic and Reader)
+
+Library page (/comic)
+- Page header with title and short intro.
+- "Continue reading" card (cover thumbnail, chapter, page, progress) if the visitor has progress.
+- Chapter grid. Each chapter card shows cover image slot, chapter number, title, page count, reading progress bar, a "Completed" label when done, and links to its Quiz and its Science entries. Future chapters may appear as non-clickable "Coming soon" cards, clearly labeled and without buttons.
+- Seed the site with two sample chapters using placeholder pages (Chapter 1 with 6 placeholder pages, Chapter 2 with 4) so the reader is fully functional and demonstrable before real art arrives. Each placeholder is clearly labeled "Placeholder — replace with original comic page".
+
+Reader (/comic/:chapterSlug/:pageNumber)
+Treat this as the most important feature. It must feel like a premium cinematic comic reader.
+
+- Stage: full-viewport Deep Space Black, free of distractions. The page image is centered and displayed with contain behavior: preserve the original aspect ratio exactly, never crop, stretch or distort. Do not hardcode an aspect ratio; read each image's natural dimensions. Fit to height by default on desktop, fit to width on mobile portrait. Support tall and wide pages.
+- Controls (top bar and bottom bar):
+  - Top: back to library, chapter title, chapter selector dropdown, Mission Log icon, fullscreen button.
+  - Bottom: Previous Page, Next Page, page indicator in the form "Page 3 / 12" (current page and total pages of the chapter), and a reading progress bar showing position in the current chapter. The progress bar is clickable and draggable to scrub, and shows chapter boundaries when displaying the whole story in the jump panel (which also shows overall position).
+  - Jump to page: a compact input and a thumbnail strip/panel for choosing any page, organized by chapter.
+  - Zoom: click/tap or double-tap toggles zoom (up to about 3x), pan while zoomed, pinch-zoom on touch.
+- Immersive behavior: controls auto-hide after a few seconds of inactivity and reappear on mouse move or tap. Controls never overlap important parts of the page when visible (reserve space or keep them translucent at the edges).
+- Navigation input: Previous/Next buttons, keyboard (Left/Right arrows, PageUp/PageDown, Space, Home, End, F for fullscreen, Esc to exit), swipe on touch devices, and tap zones on the left/right edges.
+- Fullscreen: use the Fullscreen API. Where it is not supported (for example iOS Safari), fall back to an immersive mode that hides the site header and footer.
+- Spread mode: include a Single page / Two-page spread toggle on wide landscape screens ONLY if it works flawlessly. Otherwise omit the toggle entirely. Single page mode is mandatory.
+- Performance: preload the next and previous pages, lazy-load the rest, show a calm navy skeleton shimmer while loading, serve optimized responsive images (WebP/AVIF with fallback).
+- Persistence: remember last-read page per chapter and overall; the URL always reflects the current page and is shareable.
+- Story-to-Science link: when the current page has science links, show a "Science Behind This Page" chip in the toolbar and, optionally, subtle pulsing cyan markers positioned over the relevant area of the page. Activating it opens a side panel (desktop) or bottom sheet (mobile) with a short summary and a "Read the full explanation" link to the Science entry, without interrupting reading. Closing returns focus to the reader.
+- Chapter end screen: a "Chapter complete" card with three actions: Take the Chapter Quiz, Explore the science from this chapter, and Continue to the next chapter (or "More chapters coming soon" on the last one).
+- Accessibility: each page has descriptive alt text (from data), announce page changes with aria-live, full keyboard operation, visible focus states.
+
+Content extensibility (critical)
+- All comic content lives in a single structured data source (see Section 9). To add pages: drop image files into a chapter folder and add them to the chapter's page list. To add a chapter: add a chapter entry. No component or layout changes required. Include a README section explaining exactly how to do this in plain steps.
+
+### C. THE SCIENCE BEHIND THE STORY (/science)
+
+Purpose: connect events in the comic to real science and clearly separate fiction from fact.
+
+Index (/science)
+- Intro text. Entries grouped by chapter, with filter chips by topic (Exoplanets, Nebulae, Black Holes, Galaxies, Stars, Planetary Systems). Each entry card shows a title, a one-line summary, topic tag and the chapter/page it relates to.
+
+Entry page (/science/:slug)
+- Header with title and topic tag.
+- "In the story" block, visually distinct (with a "STORY MOMENT" label, a dashed or softer border, and a thumbnail of the related comic page), describing what happens in the comic. Include a button "Return to the story" that goes back to the exact chapter and page.
+- "In real life" block, visually distinct from the story block (with a "REAL SCIENCE" label, a solid cyan accent line), containing the simplified scientific explanation.
+- Scientific illustrations: simple, clean SVG diagrams for general concepts only (for example a generic labeled schematic). Do not include numeric values or measurements in any diagram unless they come from a cited source.
+- Space imagery: image slots with credit lines.
+- Charts and graphs: include only when real, sourced data is provided. Otherwise omit them.
+- "Did You Know?" callout box with one verified, sourced fact.
+- Sources list: each source shows publisher, title and a link. Include relevant NASA reference links.
+- Related science entries and a link to related Explore topics.
+
+### D. EXPLORE THE UNIVERSE (/explore)
+
+Interactive topic discovery. Six topics: Exoplanets, Nebulae, Black Holes, Galaxies, Stars, Planetary Systems.
+
+- Card grid (responsive). Each card includes: scientific image (with credit), topic name, short description, one intriguing fact, and a "Learn More" button.
+- Space Discovery Cards behavior: the fact is revealed by hover or focus on desktop and by a "Reveal fact" tap on mobile (keyboard accessible). Opening a topic marks it as "discovered". Show a discreet counter ("3 of 6 discovered") that feeds the badge system.
+- Detail page (/explore/:slug): large cinematic hero image, overview, 3-5 key concepts, a short section on how scientists study this topic (general, with no specifics unless sourced), an image gallery with credits, a "Did You Know?" box, sources, links to related story moments or Science entries, and previous/next topic navigation.
+
+### E. OUR MISSION (/mission)
+
+Clear, persuasive and credible for the public and the jury. Structure it as a scroll narrative with these sections:
+1. The educational challenge: complex science can feel distant and hard to approach (qualitative statements only, no invented statistics).
+2. Why comics: visual storytelling lowers the barrier to entry and helps readers connect with abstract ideas.
+3. How comics make science easier to understand: images show relationships, stories give context and memory hooks, characters provide emotional connection. Avoid claims such as "studies show" unless a source is supplied.
+4. Who it is for: the target audience.
+5. Learning goals: four or five clear goals.
+6. Creative and technological value: the combination of original comic art, a custom reader, story-to-science linking, quizzes and badges.
+7. How it works: a three-step visual flow (Read the story, Discover the science, Test your knowledge).
+8. NASA Space Apps Challenge note, with a team-editable slot for the challenge name: "[CHALLENGE NAME — to be added by the team]".
+Close with a call to action to read the comic.
+
+### F. ABOUT US AND SOURCES (/about)
+- Project summary.
+- Team: a data-driven list of member cards (photo slot, name, role). Use obviously bracketed placeholders such as "[TEAM MEMBER NAME]" and "[ROLE]". Never invent names.
+- Scientific sources: grouped list with working links to official root pages only: nasa.gov, science.nasa.gov, exoplanets.nasa.gov, images.nasa.gov, the NASA Exoplanet Archive (exoplanetarchive.ipac.caltech.edu), esa.int, webbtelescope.org, and spaceappschallenge.org. Use deeper links only when the team supplies them. Never guess or construct deep URLs.
+- Image credits section listing the source for every external image used.
+- Contact: show email and social links only when real values are provided in the data file; render nothing when empty.
+
+---
+
+## 6. INTERACTIVE FEATURES
+
+1. Interactive Comic Reading: as specified in Section 5B.
+
+2. Story-to-Science Connection: page-level science links (markers, chip, side panel/bottom sheet), "Return to the story" links from every Science entry, and chapter-end science summaries.
+
+3. Knowledge Quizzes: a short quiz (3-5 multiple-choice questions) for each chapter, reached from the chapter-end screen and the library. One question at a time, instant feedback after answering, a short explanation with a link to the related Science entry, a final score, "Retry" and "Back to the story" actions. Quiz questions must rely only on approved, sourced facts (Section 8). Seed each chapter's quiz with questions based on the approved seed definitions.
+
+4. Achievement Badges: restrained, elegant badge emblems (minimal SVG in blue/cyan). Locked state is dimmed. Unlock moment is a short, tasteful animation and a small toast. Badges:
+   - Launch Ready: open the first comic page.
+   - Chapter Complete: one badge per finished chapter.
+   - Science Seeker: open three Science entries.
+   - Quiz Navigator: finish any chapter quiz.
+   - Perfect Orbit: score 100% on a chapter quiz.
+   - Cosmic Explorer: discover all six Explore topics.
+   Badges and progress are shown in the Mission Log drawer (opened from the header), which also includes a "Reset progress" action with confirmation.
+
+5. Space Discovery Cards: as specified in Section 5D.
+
+6. Smooth Animations: as specified in Section 3.5, with excellent performance.
+
+Persistence: store progress, quiz scores, badges and discovered topics in localStorage with a versioned key. Wrap all reads and writes in try/catch, and the site must work correctly when storage is unavailable or empty. No accounts, no server.
+
+Do not add any feature that does not provide real value to the visitor.
+
+---
+
+## 7. CHARACTER AND IMAGE ASSET SYSTEM
+
+- COSMO is the project's fixed character. The team will upload original reference images and comic pages. Use them exactly as provided. Never redraw, restyle, regenerate or replace COSMO, and never pick a substitute alien character.
+- Until real files are provided, show clearly labeled placeholder frames ("COSMO — upload reference image here") that are the same size and position as the final images, so the layout does not change when they are swapped in.
+- Organize assets in a clear structure: /public/characters/cosmo/, /public/comic/chapter-01/, /public/comic/chapter-02/, /public/science/, /public/explore/, /public/badges/. Comic page files use predictable names such as page-001.webp.
+- Every image is referenced from the data files, not hardcoded in components, so replacing a placeholder means replacing a file or one data field.
+- Every image has descriptive alt text and, where applicable, a credit line.
+- For non-character imagery, use high-quality real space and science photography with cinematic framing. Use only images that can be legally used and credited (for example NASA imagery, following NASA media usage guidelines). Do not imply NASA endorsement. Credit every image.
+- Provide hero, card and gallery images in several sizes (responsive srcset), with lazy loading and blur-up or skeleton placeholders. Preserve the original resolution of comic pages for the reader; do not over-compress them.
+
+---
+
+## 8. SCIENTIFIC INTEGRITY AND CONTENT RULES
+
+- Do not invent facts, figures, dates, distances, discovery counts, quotes, studies or sources.
+- Write science copy conservatively: general, well-established descriptions only, with no numbers unless a source is attached in the data.
+- Every Science entry, Explore topic and Did You Know fact has a source field with publisher, title and URL. If no verified URL is supplied, link to the relevant official root page and note "Source to be confirmed by the team" in the data file (never shown as a visible warning on the live page).
+- Never create deep links by guessing. Use only the official root domains listed in Section 5F or links supplied by the team.
+- Keep story and science visually and textually separated at all times (STORY MOMENT versus REAL SCIENCE).
+- Approved seed definitions to use for initial copy and quizzes:
+  - Exoplanets: planets that orbit stars other than our Sun.
+  - Nebulae: vast clouds of gas and dust in space.
+  - Black holes: regions of space where gravity is so strong that nothing, not even light, can escape.
+  - Galaxies: enormous systems of stars, gas and dust held together by gravity.
+  - Stars: giant balls of hot gas that produce energy through nuclear fusion.
+  - Planetary systems: a star together with the planets, moons and other objects that orbit it.
+- Do not write placeholder lorem ipsum. Where real project text is not available (team, chapter titles, challenge name), use clear bracketed placeholders.
+- Add a short note in the README telling the team to review and verify all scientific content before submission.
+
+---
+
+## 9. TECHNICAL REQUIREMENTS
+
+Recommended stack (adapt to the platform if needed):
+- React with TypeScript and Vite, Tailwind CSS (design tokens in the theme/CSS variables), React Router, Framer Motion (or CSS animations), Lucide icons. If the platform defaults to Next.js, use the App Router with static generation and keep the same structure.
+- No backend, no database, no authentication.
+
+Architecture:
+- Component-based and modular. Reusable UI components: Button, Card, Chip, Badge, SectionHeader, ImageWithCredit, Modal/Drawer/BottomSheet, Toast, ProgressBar, Tabs, plus feature components such as ComicReader, PageThumbnailStrip, ScienceLinkPanel, QuizPlayer, TopicCard, MissionLogDrawer.
+- All content in typed data files under src/data: comic (chapters and pages), science entries, explore topics, quizzes, badges, team, sources and image credits.
+- Comic data fields: chapter id, slug, number, title, subtitle, cover image, and an ordered list of pages. Each page has an image path, alt text, and an optional list of science links (entry slug, label, optional marker position as percentages).
+- Science entry fields: slug, title, topic, summary, story moment text, real science text, related chapter/page, images with credits, Did You Know fact, sources, related entries.
+- Quiz fields: chapter id, questions with options, correct answer, explanation, related science entry.
+- A small, documented progress store (local only) that exposes read and update helpers to components.
+- Short README: how to run, project structure, how to add pages, chapters, science entries, quizzes and badges, how to replace placeholder images, and how to update team and sources.
+
+Performance:
+- Fast first load. Code-split routes, lazy-load heavy components and below-the-fold images, optimized WebP/AVIF assets, responsive srcset, explicit image dimensions to avoid layout shift, font preloading with display swap and limited font weights.
+- Animate only transform and opacity. Keep the star field lightweight. Target Lighthouse scores of 90 or more for Performance and 95 or more for Accessibility, Best Practices and SEO.
+
+Responsive:
+- Fully responsive from 360px phones to large desktop screens (breakpoints around 640, 768, 1024, 1280, 1536). Touch targets at least 44px. Test the reader in portrait and landscape. No horizontal scrolling on any page.
+
+Accessibility:
+- Semantic HTML landmarks, one H1 per page, logical heading order, full keyboard navigation, visible focus rings (cyan), focus trapping in drawers and modals, aria labels on icon buttons, aria-live for reader page changes and quiz feedback, alt text on all meaningful images, WCAG AA contrast, reduced-motion support.
+
+SEO fundamentals:
+- Unique title and meta description per route, Open Graph and Twitter tags with a social image slot, canonical URLs, sitemap.xml, robots.txt, descriptive link text, structured heading hierarchy, fast loading.
+
+Browser support: latest Chrome, Safari, Firefox and Edge, plus iOS Safari and Android Chrome.
+
+Code quality: clean, consistent naming, no dead code, no console errors or warnings, no unused dependencies, comments only where logic is non-obvious.
+
+---
+
+## 10. UI/UX QUALITY STANDARDS (STRICT)
+
+The final result must satisfy all of the following:
+- A complete, cohesive platform, not just a landing page.
+- A consistent visual identity across every page, using the same tokens, spacing, components and motion rules.
+- A clear visual hierarchy on every screen, with one focal point.
+- Professional spacing and alignment, with a consistent grid.
+- Clear, readable typography with a defined scale.
+- Cinematic use of imagery with proper overlays and credits.
+- Restrained visual effects. Nothing flashy, nothing that harms performance or readability.
+- Easy navigation between sections, with the current location always clear.
+- An excellent comic reading experience: original proportions, fast page turns, no distractions.
+- No dead buttons, no fake links, no empty states without a message, no broken images.
+- No undocumented scientific claims or numbers.
+- No purple anywhere in the interface.
+- Attention to small details: hover, focus and active states, loading skeletons, empty states, toasts, consistent border radius, smooth scroll offsets under the sticky header, favicon, page titles.
+
+---
+
+## 11. BUILD ORDER AND FINAL CHECK
+
+Build in this order so each part is solid before the next:
+1. Design tokens, typography, global layout, header, footer, routing, 404.
+2. Data structure, placeholder content and the local progress store.
+3. Comic library and the full Reader with all controls.
+4. Science pages and the story-to-science panel.
+5. Explore topics and detail pages.
+6. Quizzes, badges and the Mission Log drawer.
+7. Home page polish, Mission page and About page.
+8. Performance, accessibility, SEO and README.
+
+Before finishing, verify:
+- Every route loads and every button, link and control works.
+- The Reader works on mobile and desktop, in portrait and landscape, with keyboard, swipe and fullscreen.
+- Adding a new placeholder page or chapter through the data file works without editing any component.
+- Swapping a placeholder image for a real file requires no layout changes.
+- No purple, no invented science, no lorem ipsum, no console errors.
+
+REMEMBER:
+PROJECT NAME: BEYOND RELICS
+MAIN CHARACTER: COSMO
+DESIGN IDENTITY: DARK SPACE / BLACK / ELECTRIC BLUE / CYAN
+FINAL GOAL: Create a premium, immersive, educational space exploration platform powered by scientific comic storytelling

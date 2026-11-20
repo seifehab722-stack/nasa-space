@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#05080D" />
+  <radialGradient id="glow" cx="50%" cy="65%" r="55%">
+    <stop offset="0%" stop-color="#1677FF" stop-opacity="0.28" />
+    <stop offset="60%" stop-color="#0A1626" stop-opacity="0.15" />
+    <stop offset="100%" stop-color="#05080D" stop-opacity="0" />
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <ellipse cx="600" cy="220" rx="110" ry="42" transform="rotate(-22 600 220)" stroke="#35D5F2" stroke-width="4" />
+  <circle cx="600" cy="220" r="34" fill="#0A1626" stroke="#1677FF" stroke-width="4" />
+  <circle cx="685" cy="184" r="8" fill="#35D5F2" />
+  <text x="600" y="340" text-anchor="middle" fill="#EAF4FF" font-family="system-ui, sans-serif" font-size="68" font-weight="700" letter-spacing="4">BEYOND RELICS</text>
+  <text x="600" y="395" text-anchor="middle" fill="#35D5F2" font-family="system-ui, sans-serif" font-size="24" font-weight="500">Discover the Universe. Uncover Its Secrets.</text>
+  <text x="600" y="460" text-anchor="middle" fill="#EAF4FF" fill-opacity="0.65" font-family="monospace" font-size="16">EDUCATIONAL SCIENTIFIC COMIC · SPACE EXPLORATION PLATFORM</text>
+</svg>

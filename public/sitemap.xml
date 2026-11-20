@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc><priority>1.0</priority></url>
+  <url><loc>/comic</loc><priority>0.9</priority></url>
+  <url><loc>/comic/chapter-01/1</loc><priority>0.9</priority></url>
+  <url><loc>/comic/chapter-02/1</loc><priority>0.8</priority></url>
+  <url><loc>/comic/chapter-03/1</loc><priority>0.8</priority></url>
+  <url><loc>/explore</loc><priority>0.9</priority></url>
+  <url><loc>/explore/apollo-guidance-computer</loc><priority>0.9</priority></url>
+  <url><loc>/explore/kepler-space-telescope</loc><priority>0.9</priority></url>
+  <url><loc>/explore/sojourner-rover</loc><priority>0.9</priority></url>
+  <url><loc>/explore/lunar-roving-vehicles</loc><priority>0.9</priority></url>
+  <url><loc>/explore/pioneer-10-11</loc><priority>0.9</priority></url>
+  <url><loc>/explore/stars</loc><priority>0.7</priority></url>
+  <url><loc>/explore/galaxies</loc><priority>0.7</priority></url>
+  <url><loc>/explore/black-holes</loc><priority>0.7</priority></url>
+  <url><loc>/explore/nebulae</loc><priority>0.7</priority></url>
+  <url><loc>/explore/exoplanets</loc><priority>0.7</priority></url>
+  <url><loc>/explore/planetary-systems</loc><priority>0.7</priority></url>
+  <url><loc>/mission</loc><priority>0.8</priority></url>
+  <url><loc>/about</loc><priority>0.7</priority></url>
+</urlset>

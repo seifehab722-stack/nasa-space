@@ -1,0 +1,1 @@
+Drop real historical NASA photographs and Pioneer Plaque archive material for Pioneer 10 and Pioneer 11 here, then reference their `/explore/nasa/pioneer-10-11/...` paths in `src/data/nasaTechnology.ts`.
