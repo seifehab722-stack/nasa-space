@@ -77,6 +77,7 @@ const NasaTechDetailView: React.FC<{ item: NasaTechItem }> = ({ item }) => {
         <div className="lg:col-span-6">
           <ImageWithCredit
             src={item.heroImage.src}
+            webpSrc={item.heroImage.webpSrc}
             alt={item.heroImage.alt}
             credit={item.heroImage.credit}
             caption={item.heroImage.caption}
@@ -350,6 +351,7 @@ const NasaTechDetailView: React.FC<{ item: NasaTechItem }> = ({ item }) => {
                 <ImageWithCredit
                   key={i}
                   src={img.src}
+                  webpSrc={img.webpSrc}
                   alt={img.alt}
                   credit={img.credit}
                   caption={img.caption}
@@ -451,12 +453,21 @@ const SpaceTopicDetailView: React.FC<{ topic: ExploreTopic }> = ({ topic }) => {
       {/* Cinematic Hero Frame */}
       <div className="relative overflow-hidden rounded-[20px] border border-[#35D5F2]/20 bg-[#0A1626]">
         <div className="relative aspect-[16/9] max-h-[480px] w-full overflow-hidden">
-          <img
-            src={topic.heroImage.src}
-            alt={topic.heroImage.alt}
-            referrerPolicy="no-referrer"
-            className="h-full w-full object-cover"
-          />
+          <picture>
+            {topic.heroImage.webpSrc && (
+              <source srcSet={topic.heroImage.webpSrc} type="image/webp" />
+            )}
+            <img
+              src={topic.heroImage.src}
+              alt={topic.heroImage.alt}
+              width={1200}
+              height={675}
+              loading="eager"
+              decoding="async"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+            />
+          </picture>
           <div
             className="absolute inset-0 bg-gradient-to-t from-[#05080D] via-[#05080D]/45 to-transparent"
             aria-hidden="true"
@@ -574,6 +585,7 @@ const SpaceTopicDetailView: React.FC<{ topic: ExploreTopic }> = ({ topic }) => {
               <ImageWithCredit
                 key={i}
                 src={img.src}
+                webpSrc={img.webpSrc}
                 alt={img.alt}
                 credit={img.credit}
                 caption={img.caption}

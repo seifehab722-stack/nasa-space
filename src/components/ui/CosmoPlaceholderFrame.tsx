@@ -28,13 +28,23 @@ export const CosmoPlaceholderFrame: React.FC<CosmoPlaceholderFrameProps> = ({
         } ${className}`}
       >
         {hasRealImage ? (
-          <img
-            src={COSMO_HERO_ASSET.imagePath}
-            alt={COSMO_HERO_ASSET.alt}
-            onError={() => setErrored(true)}
-            draggable={false}
-            className="block h-auto w-full object-contain select-none drop-shadow-[-3px_-2px_14px_rgba(53,213,242,0.45)] drop-shadow-[0_0_24px_rgba(22,119,255,0.28)]"
-          />
+          <picture>
+            {COSMO_HERO_ASSET.webpPath && (
+              <source srcSet={COSMO_HERO_ASSET.webpPath} type="image/webp" />
+            )}
+            <img
+              src={COSMO_HERO_ASSET.imagePath}
+              alt={COSMO_HERO_ASSET.alt}
+              width={COSMO_HERO_ASSET.width}
+              height={COSMO_HERO_ASSET.height}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              onError={() => setErrored(true)}
+              draggable={false}
+              className="block h-auto w-full object-contain select-none drop-shadow-[-3px_-2px_14px_rgba(53,213,242,0.45)] drop-shadow-[0_0_24px_rgba(22,119,255,0.28)]"
+            />
+          </picture>
         ) : (
           <div className="flex flex-col items-center justify-center p-4 sm:p-5 text-center">
             <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#35D5F2]">
@@ -66,12 +76,21 @@ export const CosmoPlaceholderFrame: React.FC<CosmoPlaceholderFrameProps> = ({
       />
 
       {hasRealImage ? (
-        <img
-          src={COSMO_HERO_ASSET.imagePath}
-          alt={COSMO_HERO_ASSET.alt}
-          onError={() => setErrored(true)}
-          className="relative z-10 h-full w-full object-contain p-4"
-        />
+        <picture className="relative z-10 h-full w-full flex items-center justify-center p-4">
+          {COSMO_HERO_ASSET.webpPath && (
+            <source srcSet={COSMO_HERO_ASSET.webpPath} type="image/webp" />
+          )}
+          <img
+            src={COSMO_HERO_ASSET.imagePath}
+            alt={COSMO_HERO_ASSET.alt}
+            width={COSMO_HERO_ASSET.width}
+            height={COSMO_HERO_ASSET.height}
+            loading="lazy"
+            decoding="async"
+            onError={() => setErrored(true)}
+            className="h-full w-full object-contain"
+          />
+        </picture>
       ) : (
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-center">
           <div className="relative flex h-56 w-56 sm:h-64 sm:w-64 items-center justify-center rounded-full border border-dashed border-[#35D5F2]/35">

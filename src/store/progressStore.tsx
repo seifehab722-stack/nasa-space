@@ -108,6 +108,34 @@ function safeWriteStorage(state: ProgressState): void {
   }
 }
 
+let storageTimeout: number | undefined;
+let pendingStateToWrite: ProgressState | null = null;
+
+function scheduleStorageWrite(state: ProgressState): void {
+  pendingStateToWrite = state;
+  if (typeof window === 'undefined') return;
+  if (storageTimeout) window.clearTimeout(storageTimeout);
+  storageTimeout = window.setTimeout(() => {
+    if (pendingStateToWrite) {
+      safeWriteStorage(pendingStateToWrite);
+      pendingStateToWrite = null;
+    }
+    storageTimeout = undefined;
+  }, 150);
+}
+
+function flushStorageWrite(state?: ProgressState): void {
+  if (storageTimeout) {
+    window.clearTimeout(storageTimeout);
+    storageTimeout = undefined;
+  }
+  const toWrite = state ?? pendingStateToWrite;
+  if (toWrite) {
+    safeWriteStorage(toWrite);
+    pendingStateToWrite = null;
+  }
+}
+
 function evaluateBadges(next: ProgressState): { updated: ProgressState; newlyUnlocked: string[] } {
   const now = new Date().toISOString();
   const unlocked = { ...next.unlockedBadges };
@@ -129,6 +157,7 @@ function evaluateBadges(next: ProgressState): { updated: ProgressState; newlyUnl
   grant('chapter-1-complete', next.completedChapters.includes('chapter-01'));
   grant('chapter-2-complete', next.completedChapters.includes('chapter-02'));
   grant('chapter-3-complete', next.completedChapters.includes('chapter-03'));
+  grant('chapter-4-complete', next.completedChapters.includes('chapter-04'));
   grant(
     'cosmic-explorer',
     next.discoveredNasaTechSlugs.length >= NASA_TECHNOLOGY_ITEMS.length
@@ -197,12 +226,23 @@ export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     return () => window.clearTimeout(timer);
   }, [toasts]);
 
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      flushStorageWrite();
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      flushStorageWrite();
+    };
+  }, []);
+
   const applyUpdate = useCallback(
     (updater: (prev: ProgressState) => ProgressState) => {
       setState((prev) => {
         const candidate = updater(prev);
         const { updated, newlyUnlocked } = evaluateBadges(candidate);
-        safeWriteStorage(updated);
+        scheduleStorageWrite(updated);
         if (newlyUnlocked.length > 0) {
           queueMicrotask(() => pushBadgeToasts(newlyUnlocked));
         }
@@ -272,7 +312,7 @@ export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const resetProgress = useCallback(() => {
     setState(DEFAULT_STATE);
-    safeWriteStorage(DEFAULT_STATE);
+    flushStorageWrite(DEFAULT_STATE);
     try {
       window.localStorage.removeItem(LEGACY_STORAGE_KEY);
     } catch {
@@ -315,21 +355,35 @@ export const ProgressProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     [state]
   );
 
+  const contextValue = React.useMemo(
+    () => ({
+      state,
+      toasts,
+      dismissToast,
+      isMissionLogOpen,
+      setMissionLogOpen,
+      recordPageRead,
+      markChapterCompleted,
+      recordNasaTechDiscovered,
+      resetProgress,
+      getChapterProgress,
+    }),
+    [
+      state,
+      toasts,
+      dismissToast,
+      isMissionLogOpen,
+      setMissionLogOpen,
+      recordPageRead,
+      markChapterCompleted,
+      recordNasaTechDiscovered,
+      resetProgress,
+      getChapterProgress,
+    ]
+  );
+
   return (
-    <ProgressContext.Provider
-      value={{
-        state,
-        toasts,
-        dismissToast,
-        isMissionLogOpen,
-        setMissionLogOpen,
-        recordPageRead,
-        markChapterCompleted,
-        recordNasaTechDiscovered,
-        resetProgress,
-        getChapterProgress,
-      }}
-    >
+    <ProgressContext.Provider value={contextValue}>
       {children}
     </ProgressContext.Provider>
   );

@@ -41,6 +41,7 @@ export interface SourceReference {
 
 export interface ImageAssetInfo {
   src: string;
+  webpSrc?: string;
   alt: string;
   credit: string;
   caption?: string;

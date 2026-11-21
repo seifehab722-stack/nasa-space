@@ -65,36 +65,64 @@ export const StarfieldBackground: React.FC<{ subtle?: boolean }> = ({ subtle = t
           prefersReducedMotion || isMobile
             ? 1
             : 0.78 + 0.22 * Math.sin(seconds * s.speed + s.phase);
+        ctx.globalAlpha = s.alpha * twinkle;
+        ctx.fillStyle = s.tint === 'cyan' ? '#35D5F2' : '#EAF4FF';
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-        ctx.fillStyle =
-          s.tint === 'cyan'
-            ? `rgba(53, 213, 242, ${(s.alpha * twinkle).toFixed(3)})`
-            : `rgba(234, 244, 255, ${(s.alpha * twinkle).toFixed(3)})`;
         ctx.fill();
       }
+      ctx.globalAlpha = 1;
     };
 
     setup();
     draw(0);
 
-    if (!prefersReducedMotion && !isMobile) {
-      const loop = (t: number) => {
-        draw(t);
-        animationFrameId = window.requestAnimationFrame(loop);
-      };
-      animationFrameId = window.requestAnimationFrame(loop);
-    }
+    let isVisible = !document.hidden;
 
+    const startLoop = () => {
+      if (!prefersReducedMotion && !isMobile && isVisible && !animationFrameId) {
+        const loop = (t: number) => {
+          draw(t);
+          animationFrameId = window.requestAnimationFrame(loop);
+        };
+        animationFrameId = window.requestAnimationFrame(loop);
+      }
+    };
+
+    const stopLoop = () => {
+      if (animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+        animationFrameId = 0;
+      }
+    };
+
+    startLoop();
+
+    const onVisibilityChange = () => {
+      isVisible = !document.hidden;
+      if (isVisible) {
+        startLoop();
+      } else {
+        stopLoop();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    let resizeTimer = 0;
     const onResize = () => {
-      setup();
-      draw(0);
+      if (resizeTimer) window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        setup();
+        draw(0);
+      }, 100);
     };
     window.addEventListener('resize', onResize, { passive: true });
 
     return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('resize', onResize);
-      if (animationFrameId) window.cancelAnimationFrame(animationFrameId);
+      if (resizeTimer) window.clearTimeout(resizeTimer);
+      stopLoop();
     };
   }, [subtle]);
 

@@ -44,6 +44,7 @@ export const ComicLibraryPage: React.FC = () => {
               <img
                 src={lastReadChapter.coverImage}
                 alt={lastReadChapter.coverAlt}
+                decoding="async"
                 className="h-full w-full object-contain"
               />
             </div>
@@ -141,6 +142,7 @@ export const ComicLibraryPage: React.FC = () => {
                   src={chapter.coverImage}
                   alt={chapter.coverAlt}
                   loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 />
                 <div

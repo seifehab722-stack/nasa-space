@@ -3,6 +3,7 @@ import { Camera } from 'lucide-react';
 
 interface ImageWithCreditProps {
   src: string;
+  webpSrc?: string;
   alt: string;
   credit?: string;
   caption?: string;
@@ -19,6 +20,7 @@ interface ImageWithCreditProps {
 
 export const ImageWithCredit: React.FC<ImageWithCreditProps> = ({
   src,
+  webpSrc,
   alt,
   credit,
   caption,
@@ -74,21 +76,24 @@ export const ImageWithCredit: React.FC<ImageWithCreditProps> = ({
             )}
           </div>
         ) : (
-          <img
-            src={src}
-            alt={alt}
-            width={width}
-            height={height}
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
-            referrerPolicy="no-referrer"
-            onLoad={() => setLoaded(true)}
-            onError={() => setErrored(true)}
-            style={objectPosition ? { objectPosition } : undefined}
-            className={`h-full w-full object-cover transition-opacity duration-300 ${
-              loaded ? 'opacity-100' : 'opacity-0'
-            } ${imgClassName}`}
-          />
+          <picture className="block h-full w-full">
+            {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
+            <img
+              src={src}
+              alt={alt}
+              width={width}
+              height={height}
+              loading={priority ? 'eager' : 'lazy'}
+              decoding="async"
+              referrerPolicy="no-referrer"
+              onLoad={() => setLoaded(true)}
+              onError={() => setErrored(true)}
+              style={objectPosition ? { objectPosition } : undefined}
+              className={`h-full w-full object-cover transition-opacity duration-300 ${
+                loaded ? 'opacity-100' : 'opacity-0'
+              } ${imgClassName}`}
+            />
+          </picture>
         )}
       </div>
 

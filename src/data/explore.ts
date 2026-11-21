@@ -9,6 +9,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Stars are giant balls of hot gas that produce energy through nuclear fusion, balancing outward energy pressure against their own gravity.',
     heroImage: {
       src: '/src/assets/images/space_star_photosphere_1794873116826.jpg',
+      webpSrc: '/src/assets/images/space_star_photosphere_1794873116826.webp',
       alt: 'Detailed view of a star photosphere showing glowing plasma granulation and coronal loops',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/ESA imagery)',
       caption: 'Active stellar surface with glowing coronal loops in space.',
@@ -41,6 +42,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_star_photosphere_1794873116826.jpg',
+        webpSrc: '/src/assets/images/space_star_photosphere_1794873116826.webp',
         alt: 'Glowing stellar photosphere and corona',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Granular plasma cells and magnetic loops above a star’s surface.',
@@ -75,6 +77,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Galaxies are enormous systems of stars, gas, and dust held together by gravity, appearing in spiral, elliptical, and irregular shapes.',
     heroImage: {
       src: '/src/assets/images/space_spiral_galaxy_1794873115788.jpg',
+      webpSrc: '/src/assets/images/space_spiral_galaxy_1794873115788.webp',
       alt: 'Grand design spiral galaxy with luminous core and sweeping star-forming spiral arms',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/ESA imagery)',
       caption: 'Spiral galaxy displaying a bright central bulge and blue star-forming arms.',
@@ -107,6 +110,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_spiral_galaxy_1794873115788.jpg',
+        webpSrc: '/src/assets/images/space_spiral_galaxy_1794873115788.webp',
         alt: 'Spiral galaxy in deep space',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Dark dust lanes winding alongside young blue star clusters.',
@@ -141,6 +145,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Black holes are regions of space where gravity is so strong that nothing, not even light, can escape past their event horizon.',
     heroImage: {
       src: '/src/assets/images/space_black_hole_disk_1794873113844.jpg',
+      webpSrc: '/src/assets/images/space_black_hole_disk_1794873113844.webp',
       alt: 'Black hole event horizon shadow framed by a glowing accretion disk of superheated plasma',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/EHT imagery)',
       caption: 'Relativistic accretion disk glowing around a black hole shadow.',
@@ -173,6 +178,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_black_hole_disk_1794873113844.jpg',
+        webpSrc: '/src/assets/images/space_black_hole_disk_1794873113844.webp',
         alt: 'Accretion disk swirling around a black hole',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Superheated matter spiraling outside the event horizon.',
@@ -207,6 +213,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Nebulae are vast clouds of gas and dust in space; some act as nurseries for newborn stars while others form from material shed by dying stars.',
     heroImage: {
       src: '/src/assets/images/space_nebula_clouds_1794873113544.jpg',
+      webpSrc: '/src/assets/images/space_nebula_clouds_1794873113544.webp',
       alt: 'Deep-space nebula featuring dark pillars of cosmic dust and glowing gas clouds',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/ESA/STScI imagery)',
       caption: 'Luminous gas and dense dust pillars inside a star-forming nebula.',
@@ -239,6 +246,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_nebula_clouds_1794873113544.jpg',
+        webpSrc: '/src/assets/images/space_nebula_clouds_1794873113544.webp',
         alt: 'Pillar-shaped cosmic dust and ionized gas nebula',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Dust pillars sculpted by radiation from bright young stars.',
@@ -273,6 +281,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Exoplanets are planets that orbit stars other than our Sun, and astronomers often detect them by measuring tiny, repeating dips in a star’s brightness.',
     heroImage: {
       src: '/src/assets/images/space_exoplanet_horizon_1794873112920.jpg',
+      webpSrc: '/src/assets/images/space_exoplanet_horizon_1794873112920.webp',
       alt: 'Curved blue-lit atmospheric horizon of a distant exoplanet in deep space',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/ESA imagery)',
       caption: 'Observatory visualization of a distant rocky exoplanet horizon.',
@@ -310,12 +319,14 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_exoplanet_horizon_1794873112920.jpg',
+        webpSrc: '/src/assets/images/space_exoplanet_horizon_1794873112920.webp',
         alt: 'Atmospheric horizon of a distant exoplanet',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Thin atmospheric scattering along a rocky exoplanet limb.',
       },
       {
         src: '/src/assets/images/space_planetary_system_1794873117033.jpg',
+        webpSrc: '/src/assets/images/space_planetary_system_1794873117033.webp',
         alt: 'Planetary system orbiting a distant host star',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Worlds arranged across inner and outer orbital zones around a star.',
@@ -350,6 +361,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
       'Planetary systems consist of a star together with the planets, moons, and other objects that orbit it, all shaped by gravity and orbital motion.',
     heroImage: {
       src: '/src/assets/images/space_planetary_system_1794873117033.jpg',
+      webpSrc: '/src/assets/images/space_planetary_system_1794873117033.webp',
       alt: 'Wide view of a planetary system showing a central star, rocky and gas planets, and dust rings',
       credit: 'BEYOND RELICS Observatory Visualization Slot (replace with credited NASA/ESA imagery)',
       caption: 'A central star surrounded by orbiting worlds and dust belts.',
@@ -382,6 +394,7 @@ export const EXPLORE_TOPICS: ExploreTopic[] = [
     gallery: [
       {
         src: '/src/assets/images/space_planetary_system_1794873117033.jpg',
+        webpSrc: '/src/assets/images/space_planetary_system_1794873117033.webp',
         alt: 'Planetary system with orbiting worlds',
         credit: 'BEYOND RELICS Observatory Visualization Slot',
         caption: 'Multiple worlds tracing orbits around a central star.',

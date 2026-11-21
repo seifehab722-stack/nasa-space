@@ -40,7 +40,7 @@ const NotFoundPage = lazy(() =>
 );
 
 const RouteFallback: React.FC = () => (
-  <div className="relative z-10 mx-auto max-w-[1280px] px-4 py-16 sm:px-6 lg:px-8">
+  <div className="relative z-10 mx-auto max-w-[1280px] min-h-[60vh] px-4 py-16 sm:px-6 lg:px-8">
     <div className="skeleton-navy h-10 w-64 rounded-[10px] mb-6" />
     <div className="skeleton-navy h-64 w-full rounded-[16px]" />
   </div>
@@ -85,7 +85,7 @@ const AppShell: React.FC = () => {
           </Suspense>
         </div>
       ) : (
-        <main id="main-content" className="flex-1" key={location.pathname}>
+        <main id="main-content" className="flex-1">
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<HomePage />} />

@@ -6,8 +6,11 @@ import { ComicChapter } from './types';
  */
 export const COSMO_HERO_ASSET = {
   imagePath: '/characters/cosmo/cosmo-hero.png',
+  webpPath: '/characters/cosmo/cosmo-hero.webp',
   alt: 'COSMO, the alien explorer of BEYOND RELICS',
   placeholderLabel: 'COSMO — upload reference image here',
+  width: 1000,
+  height: 1339,
 };
 
 export const COMIC_CHAPTERS: ComicChapter[] = [
@@ -169,6 +172,62 @@ export const COMIC_CHAPTERS: ComicChapter[] = [
         pageNumber: 8,
         imagePath: '/comic/chapter-03/page-008.webp',
         alt: 'Comic page 8 showing a low-fuel warning hologram as Kepler notes its retirement after nine years in space, with COSMO waving goodbye from his pod against distant planetary systems under the caption "THE END — THE UNIVERSE IS STILL WAITING TO BE EXPLORED!".',
+        isPlaceholder: false,
+      },
+    ],
+  },
+  {
+    id: 'chapter-4',
+    slug: 'chapter-04',
+    number: 4,
+    title: 'Sojourner Rover',
+    subtitle: 'The first robotic rover to explore the Martian surface',
+    description:
+      'Arriving on Mars aboard the Mars Pathfinder lander, COSMO meets Sojourner, the pioneering six-wheeled robotic rover that opened a new era of planetary exploration.',
+    coverImage: '/comic/chapter-04/page-001.jpg',
+    coverAlt:
+      'Chapter 4 cover showing COSMO’s spacecraft descending toward Mars and COSMO greeting the robotic rover Sojourner',
+    pages: [
+      {
+        pageNumber: 1,
+        imagePath: '/comic/chapter-04/page-001.jpg',
+        alt: 'Comic page 1 showing COSMO’s silver spacecraft landing on the Martian surface near a small robotic rover, and COSMO walking down the spacecraft ramp in an astronaut suit to greet Sojourner.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 2,
+        imagePath: '/comic/chapter-04/page-002.jpg',
+        alt: 'Comic page 2 showing a technical blueprint hologram detailing Sojourner’s dimensions (65 cm length, 48 cm width, 30 cm height, 10.5 kg mass), its six-wheel rocker-bogie suspension system, solar panels, and a portrait hologram of abolitionist Sojourner Truth after whom the rover was named, along with a launch hologram of the Delta II rocket.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 3,
+        imagePath: '/comic/chapter-04/page-003.jpg',
+        alt: 'Comic page 3 showing the Carl Sagan Memorial Station stationary lander on Mars, a hologram of the trajectory from Earth to Mars, the entry capsule descending through the Martian atmosphere with a heat shield, and the cluster of airbags bouncing on the Martian surface during landing.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 4,
+        imagePath: '/comic/chapter-04/page-004.jpg',
+        alt: 'Comic page 4 showing Sojourner rolling down the lander ramp on July 5, 1997, communicating with the lander via UHF radio link, using its Alpha Proton X-ray Spectrometer (APXS) to analyze a Martian rock, and driving across the Martian soil.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 5,
+        imagePath: '/comic/chapter-04/page-005.jpg',
+        alt: 'Comic page 5 showing Sojourner inspecting rocks named Barnacle Bill and Yogi with its APXS instrument, traveling approximately 100 meters across Mars, and displaying a mission timeline hologram showing its operation lasted 83 sols instead of the planned 7 days.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 6,
+        imagePath: '/comic/chapter-04/page-006.jpg',
+        alt: 'Comic page 6 showing a summary hologram of Sojourner’s milestones (83 sols, ~100 m distance, 550 photos, 230 commanded maneuvers, 16 APXS analyses, ~250 m² explored area), the final loss of communication with the lander on September 27, 1997, and a lineage hologram depicting later Mars rovers Spirit, Opportunity, Curiosity, Perseverance, and the Ingenuity helicopter.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 7,
+        imagePath: '/comic/chapter-04/page-007.jpg',
+        alt: 'Comic page 7 showing a hologram of future Mars exploration rovers and helicopters, a size comparison lineup of Mars rovers, and COSMO resting beside Sojourner under the Martian sunset watching the distant Pathfinder lander.',
         isPlaceholder: false,
       },
     ],

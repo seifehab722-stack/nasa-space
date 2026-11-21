@@ -19,13 +19,21 @@ export const TopicCard: React.FC<TopicCardProps> = ({ topic, compact = false }) 
           to={`/explore/${topic.slug}`}
           className="relative aspect-[16/9] w-full overflow-hidden bg-[#000000] block"
         >
-          <img
-            src={topic.heroImage.src}
-            alt={topic.heroImage.alt}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            className="h-full w-full object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
-          />
+          <picture>
+            {topic.heroImage.webpSrc && (
+              <source srcSet={topic.heroImage.webpSrc} type="image/webp" />
+            )}
+            <img
+              src={topic.heroImage.src}
+              alt={topic.heroImage.alt}
+              width={topic.heroImage.width ?? 1200}
+              height={topic.heroImage.height ?? 896}
+              loading="lazy"
+              decoding="async"
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </picture>
         </Link>
 
         <div className="flex flex-1 flex-col p-4">
@@ -63,13 +71,21 @@ export const TopicCard: React.FC<TopicCardProps> = ({ topic, compact = false }) 
         onFocus={() => setRevealed(true)}
         onBlur={() => setRevealed(false)}
       >
-        <img
-          src={topic.heroImage.src}
-          alt={topic.heroImage.alt}
-          loading="lazy"
-          referrerPolicy="no-referrer"
-          className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        />
+        <picture>
+          {topic.heroImage.webpSrc && (
+            <source srcSet={topic.heroImage.webpSrc} type="image/webp" />
+          )}
+          <img
+            src={topic.heroImage.src}
+            alt={topic.heroImage.alt}
+            width={topic.heroImage.width ?? 1200}
+            height={topic.heroImage.height ?? 896}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        </picture>
         <div
           className="absolute inset-0 bg-gradient-to-t from-[#05080D] via-[#05080D]/30 to-transparent"
           aria-hidden="true"

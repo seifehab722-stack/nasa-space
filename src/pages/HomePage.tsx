@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -12,6 +12,7 @@ import {
   Telescope,
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import earthHeroImage from '../assets/images/earth_horizon_poster_1794874102848.jpg';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Chip } from '../components/ui/Chip';
@@ -22,10 +23,6 @@ import { NASA_TECHNOLOGY_ITEMS } from '../data/nasaTechnology';
 import { useProgress } from '../store/progressStore';
 import { launchImmersiveReader } from '../utils/readerLaunch';
 import { usePageMeta } from '../utils/seo';
-
-const Earth3DCanvas = lazy(() =>
-  import('../components/features/Earth3DCanvas').then((m) => ({ default: m.Earth3DCanvas }))
-);
 
 const GOALS = [
   {
@@ -71,9 +68,6 @@ export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const { state, setMissionLogOpen } = useProgress();
   const [scrollRatio, setScrollRatio] = useState(0);
-  const [earth3DReady, setEarth3DReady] = useState(false);
-  const [usePosterOnly, setUsePosterOnly] = useState(false);
-  const [mount3D, setMount3D] = useState(false);
   const [streak, setStreak] = useState<ShootingStreak | null>(null);
 
   const chapter1 = getPublishedChapters()[0];
@@ -81,18 +75,7 @@ export const HomePage: React.FC = () => {
     ? `/comic/${state.lastRead.chapterSlug}/${state.lastRead.pageNumber}`
     : '/comic/chapter-01/1';
 
-  // Defer 3D initialization slightly so poster & text paint first
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      setUsePosterOnly(true);
-      return;
-    }
-    const timer = window.setTimeout(() => setMount3D(true), 120);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  // Scroll drift (max ~8%) and pure-black transition darkening
+  // Scroll darkening for hero transition
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
@@ -140,12 +123,9 @@ export const HomePage: React.FC = () => {
     };
   }, []);
 
-  const earthDriftY = scrollRatio * 44; // subtle downward drift
-  const earthScale = 1 + scrollRatio * 0.07; // <= 8% scale
-
   return (
     <div className="relative z-10">
-      {/* 1. FULL-VIEWPORT HERO ON NEAR-BLACK WITH 3D EARTH HORIZON */}
+      {/* 1. FULL-VIEWPORT HERO ON NEAR-BLACK WITH STATIC EARTH HORIZON */}
       <section
         aria-label="Introduction"
         className="relative min-h-screen -mt-16 sm:-mt-[72px] pt-24 sm:pt-28 pb-44 sm:pb-24 flex flex-col items-center justify-start overflow-hidden"
@@ -176,43 +156,37 @@ export const HomePage: React.FC = () => {
           />
         )}
 
-        {/* Earth Layer: Static Poster immediate + 3D Three.js Earth cross-fading in */}
+        {/* Earth Layer: High-quality Static Earth Horizon Photograph */}
         <div
-          className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
-          style={{
-            transform: `translate3d(0, ${earthDriftY}px, 0) scale(${earthScale})`,
-            transformOrigin: '50% 78%',
-          }}
+          className="pointer-events-none absolute inset-0 z-[1] overflow-hidden flex items-end justify-center select-none"
           aria-hidden="true"
         >
-          {/* Static high-quality Earth poster (immediate paint + reduced-motion / WebGL fallback) */}
+          {/* Subtle static atmospheric glow around the curved limb */}
           <div
-            className={`absolute inset-0 flex items-end justify-center transition-opacity duration-700 ${
-              earth3DReady && !usePosterOnly ? 'opacity-0' : 'opacity-100'
-            }`}
-          >
-            <img
-              src="/src/assets/images/earth_horizon_poster_1794874102848.jpg"
-              alt=""
-              className="w-[140vw] sm:w-[110vw] md:w-full max-w-none h-[58vh] sm:h-[62vh] md:h-[66vh] object-cover object-top opacity-95"
-            />
-          </div>
+            className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[140vw] sm:w-[110vw] md:w-[88vw] max-w-[1700px] h-[48vh] sm:h-[54vh] md:h-[58vh] rounded-[100%_100%_0_0] bg-gradient-to-t from-transparent via-[#1677FF]/10 to-[#35D5F2]/14 blur-2xl opacity-60"
+            aria-hidden="true"
+          />
 
-          {/* Real 3D Three.js Earth */}
-          {mount3D && !usePosterOnly && (
-            <div
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                earth3DReady ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Suspense fallback={null}>
-                <Earth3DCanvas
-                  onReady={() => setEarth3DReady(true)}
-                  onFallback={() => setUsePosterOnly(true)}
-                />
-              </Suspense>
-            </div>
-          )}
+          <img
+            src={earthHeroImage}
+            alt="Planet Earth seen from space, with the curved horizon and a thin blue atmosphere"
+            width={1376}
+            height={768}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            className="w-[140vw] sm:w-[110vw] md:w-full max-w-none h-[58vh] sm:h-[62vh] md:h-[66vh] object-cover object-top opacity-95"
+          />
+
+          {/* Side & bottom subtle gradient vignette fading edges into pure black (#000000 / #05080D) */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#000000]/90"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#000000]/70 via-transparent to-[#000000]/70"
+            aria-hidden="true"
+          />
         </div>
 
         {/* Seamless pure black bottom transition + scroll darkening */}
@@ -227,8 +201,8 @@ export const HomePage: React.FC = () => {
         />
 
         {/* Centered Typography & Pill Controls Above the Earth */}
-        <div className="relative z-20 mx-auto flex w-full max-w-[1100px] flex-col items-center px-4 text-center sm:px-6">
-          <h1 className="font-display font-light uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[40px] sm:text-[62px] lg:text-[78px] leading-[1.06] text-[#EAF4FF] select-none">
+        <div className="relative z-30 mx-auto flex w-full max-w-[1100px] flex-col items-center px-4 text-center sm:px-6">
+          <h1 className="font-display font-light uppercase tracking-[0.12em] sm:tracking-[0.22em] text-[32px] sm:text-[62px] lg:text-[78px] leading-[1.06] text-[#EAF4FF] select-none">
             <span>BEYOND </span>
             <span className="bg-gradient-to-r from-[#EAF4FF] via-[#EAF4FF]/75 to-[#EAF4FF]/40 bg-clip-text text-transparent">
               RELICS
@@ -268,7 +242,7 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* COSMO Floating in Lower Right, Slightly Overlapping Earth Edge */}
-        <div className="cosmo-float pointer-events-none absolute -bottom-1.5 right-3 sm:right-7 lg:right-12 z-20 w-[138px] sm:w-[184px] lg:w-[clamp(210px,21vw,290px)]">
+        <div className="cosmo-float pointer-events-none absolute -bottom-2 sm:-bottom-1.5 right-1.5 sm:right-7 lg:right-12 z-20 w-[105px] sm:w-[184px] lg:w-[clamp(210px,21vw,290px)]">
           <CosmoPlaceholderFrame variant="hero-float" className="w-full" />
         </div>
       </section>
