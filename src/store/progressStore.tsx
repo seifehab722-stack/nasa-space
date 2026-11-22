@@ -158,6 +158,7 @@ function evaluateBadges(next: ProgressState): { updated: ProgressState; newlyUnl
   grant('chapter-2-complete', next.completedChapters.includes('chapter-02'));
   grant('chapter-3-complete', next.completedChapters.includes('chapter-03'));
   grant('chapter-4-complete', next.completedChapters.includes('chapter-04'));
+  grant('chapter-5-complete', next.completedChapters.includes('chapter-05'));
   grant(
     'cosmic-explorer',
     next.discoveredNasaTechSlugs.length >= NASA_TECHNOLOGY_ITEMS.length

@@ -232,6 +232,62 @@ export const COMIC_CHAPTERS: ComicChapter[] = [
       },
     ],
   },
+  {
+    id: 'chapter-5',
+    slug: 'chapter-05',
+    number: 5,
+    title: 'Lunar Roving Vehicle',
+    subtitle: "Humanity's electric buggy on the Moon across Apollo 15, 16, and 17",
+    description:
+      'COSMO explores the Moon and discovers the Lunar Roving Vehicle, the four-wheeled electric rover that carried Apollo astronauts across lunar mountains, craters, and plains.',
+    coverImage: '/comic/chapter-05/page-001.jpg',
+    coverAlt:
+      'Chapter 5 cover showing COSMO walking on the Moon toward the Lunar Roving Vehicle and seated at the rover’s controls',
+    pages: [
+      {
+        pageNumber: 1,
+        imagePath: '/comic/chapter-05/page-001.jpg',
+        alt: 'Comic page 1 showing COSMO discovering the Lunar Roving Vehicle on the Moon, climbing into the driver’s seat, and engineers designing and assembling the rover on Earth.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 2,
+        imagePath: '/comic/chapter-05/page-002.jpg',
+        alt: 'Comic page 2 showing a development hologram by NASA and Boeing, the woven zinc-coated steel mesh tires designed without pneumatic air, independent electric drive motors at each wheel, and the astronaut T-handle controller.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 3,
+        imagePath: '/comic/chapter-05/page-003.jpg',
+        alt: 'Comic page 3 showing the rover’s 36-volt silver-zinc batteries, how it folded into a compact package beneath the Lunar Module, and the pulley deployment system used by astronauts to unfold it on the Moon.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 4,
+        imagePath: '/comic/chapter-05/page-004.jpg',
+        alt: 'Comic page 4 showing Apollo astronauts driving the Lunar Roving Vehicle across the Moon during Apollo 15 at Hadley-Apennine, Apollo 16 at Descartes Highlands, and Apollo 17 at Taurus-Littrow with mission distance statistics.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 5,
+        imagePath: '/comic/chapter-05/page-005.jpg',
+        alt: 'Comic page 5 showing COSMO inspecting the damaged rear fender torn off by a hammer on Apollo 17, the astronaut and Mission Control map-and-duct-tape repair, and the high-gain dish antenna used to communicate with Earth.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 6,
+        imagePath: '/comic/chapter-05/page-006.jpg',
+        alt: 'Comic page 6 showing the color television camera controlled by Mission Control, the Sun-shadow navigation system, the 7.6 km walkback safety limit radius, and the 35.9 km distance record on Apollo 17.',
+        isPlaceholder: false,
+      },
+      {
+        pageNumber: 7,
+        imagePath: '/comic/chapter-05/page-007.jpg',
+        alt: 'Comic page 7 showing the Lunar Roving Vehicle left on the Moon with its wheel tracks, COSMO sitting beside the rover beneath the lunar sky, and COSMO walking alongside the rover under the distant Earth.',
+        isPlaceholder: false,
+      },
+    ],
+  },
 ];
 
 export function getChapterBySlug(slug: string): ComicChapter | undefined {
