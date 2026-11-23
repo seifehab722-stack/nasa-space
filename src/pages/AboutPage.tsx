@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Mail, User } from 'lucide-react';
+import { ExternalLink, Mail } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import {
@@ -7,7 +7,6 @@ import {
   IMAGE_CREDITS,
   OFFICIAL_SOURCE_GROUPS,
   PROJECT_CONTACT,
-  TEAM_MEMBERS,
 } from '../data/about';
 import { usePageMeta } from '../utils/seo';
 
@@ -15,7 +14,7 @@ export const AboutPage: React.FC = () => {
   usePageMeta({
     title: 'About Us & Scientific Sources',
     description:
-      'Meet the BEYOND RELICS team and inspect the official space science sources and image credits behind the platform.',
+      'Inspect the educational mission, official space science sources, and image credits behind BEYOND RELICS.',
     path: '/about',
   });
 
@@ -54,39 +53,6 @@ export const AboutPage: React.FC = () => {
             </div>
           </div>
         </Card>
-      </section>
-
-      {/* Team Section */}
-      <section aria-labelledby="about-team">
-        <SectionHeader
-          eyebrow="The Team"
-          title="Creators & Researchers"
-          description="Data-driven team roster ready for final contributor names and portraits."
-        />
-
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {TEAM_MEMBERS.map((member) => (
-            <Card key={member.id} className="p-5 flex flex-col items-center text-center">
-              <div className="mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-dashed border-[#35D5F2]/35 bg-[#05080D]">
-                {member.photoPath ? (
-                  <img
-                    src={member.photoPath}
-                    alt={member.name}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <User className="h-8 w-8 text-[#35D5F2]/55" aria-hidden="true" />
-                )}
-              </div>
-              <h3 className="font-display text-base font-semibold text-[#EAF4FF]">
-                {member.name}
-              </h3>
-              <p className="mt-1.5 text-xs text-[#EAF4FF]/70 leading-relaxed">
-                {member.role}
-              </p>
-            </Card>
-          ))}
-        </div>
       </section>
 
       {/* Scientific Sources */}

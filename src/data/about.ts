@@ -1,36 +1,9 @@
-import { ImageAssetInfo, SourceReference, TeamMember } from './types';
+import { ImageAssetInfo, SourceReference } from './types';
 
 export const CHALLENGE_INFO = {
   event: 'NASA Space Apps Challenge',
   challengeName: '[CHALLENGE NAME — to be added by the team]',
 };
-
-/**
- * Team directory.
- * Replace bracketed placeholders with real member names, roles, and optional photos.
- */
-export const TEAM_MEMBERS: TeamMember[] = [
-  {
-    id: 'member-1',
-    name: '[TEAM MEMBER NAME]',
-    role: '[ROLE — e.g., Story & Comic Illustration]',
-  },
-  {
-    id: 'member-2',
-    name: '[TEAM MEMBER NAME]',
-    role: '[ROLE — e.g., Science Research & Verification]',
-  },
-  {
-    id: 'member-3',
-    name: '[TEAM MEMBER NAME]',
-    role: '[ROLE — e.g., Product Design & Engineering]',
-  },
-  {
-    id: 'member-4',
-    name: '[TEAM MEMBER NAME]',
-    role: '[ROLE — e.g., Educational Design & Outreach]',
-  },
-];
 
 /**
  * Contact details.

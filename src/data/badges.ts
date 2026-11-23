@@ -44,6 +44,13 @@ export const BADGE_DEFINITIONS: BadgeDefinition[] = [
     iconType: 'chapter',
   },
   {
+    id: 'chapter-6-complete',
+    title: 'Chapter 6 Complete',
+    description: 'Read all pages of Chapter 6 in the comic reader.',
+    criterion: 'Complete Chapter 6',
+    iconType: 'chapter',
+  },
+  {
     id: 'cosmic-explorer',
     title: 'Cosmic Explorer',
     description: 'Inspect all five NASA Technology missions and instruments in Explore.',

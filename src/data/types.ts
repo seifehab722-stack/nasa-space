@@ -145,10 +145,3 @@ export interface BadgeDefinition {
   iconType: 'rocket' | 'chapter' | 'telescope';
 }
 
-export interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  photoPath?: string;
-  bio?: string;
-}
